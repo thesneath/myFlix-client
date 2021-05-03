@@ -9,6 +9,7 @@ This is the client side of an application built using React. The purpose of this
 
  * react 17.0.2
  * react-dom 17.0.2
+ * axios 0.21.1
 
 
 ##  PROJECT INFO
