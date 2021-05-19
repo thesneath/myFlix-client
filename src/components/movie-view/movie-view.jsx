@@ -1,6 +1,8 @@
 import React from "react";
 import Button from 'react-bootstrap/Button'
 
+import { Link } from 'react-router-dom';
+
 export class MovieView extends React.Component {
 
   keypressCallback(event) {
@@ -20,6 +22,7 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
+        {console.log(movie.name)}
         <div className="movie-poster">
           <img src={movie.ImagePath} />
         </div>
@@ -31,6 +34,13 @@ export class MovieView extends React.Component {
           <span className="label"> Description: </span>
           <span className="value"> {movie.Description} </span>
         </div>
+        <Link to={`directors/${movie.Director.Name}`}>
+          <Button variant="link">Director</Button>
+        </Link>
+        <Link to={`genres/${movie.Genre.Name}`}>
+          <Button variant="link">Genre</Button>
+        </Link>
+
         <Button onClick={() => { onBackClick(null); }}>Back</Button>
       </div>
     );

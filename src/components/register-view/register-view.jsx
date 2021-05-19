@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -13,9 +14,20 @@ export function RegisterView(props) {
   const handleSubmit = () => {
     event.preventDefault();
     console.log(username, password, email, birthday);
-
-
-    props.onRegister(username)
+    axios.post('https://alexdb.herokuapp.com/users', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open('/', '_self');
+    })
+    .catch(e => {
+      console.log('error registering the user');
+    })
   }
 
   return (
@@ -40,7 +52,7 @@ export function RegisterView(props) {
         <Form.Control type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
       </Form.Group>
       <Button variant="primary" type="submit" onClick={handleSubmit} >Sign Up</Button>{' '}
-      <Button variant="secondary" type="submit" onClick={props.toggleRegister}>Back</Button>
+      {/* <Button variant="secondary" type="submit" onClick={props.toggleRegister}>Back</Button> */}
     </Form>
   )
 }
@@ -48,5 +60,4 @@ export function RegisterView(props) {
 RegisterView.propTypes = {
   username: PropTypes.string,
   password: PropTypes.string,
-  onRegister: PropTypes.func.isRequired
 }

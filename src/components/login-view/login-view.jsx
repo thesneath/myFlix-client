@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -9,9 +12,18 @@ export function LoginView(props) {
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    console.log(username, password);
+    axios.post('https://alexdb.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+    .then(response => {
+      const data = response.data;
+      props.onLoggedIn(data);
+    })
+    .catch(e => {
+      console.log('no such user')
+    })
 
-    props.onLoggedIn(username);
   };
 
   return (
@@ -27,7 +39,9 @@ export function LoginView(props) {
       </Form.Group>
 
       <Button variant="primary" type="submit" onClick={handleSumbit}>Submit</Button>{' '}
-      <Button variant="secondary" type="submit" onClick={props.toggleRegister}>Sign up</Button>
+      <Link to="/register">
+        <Button variant="secondary">Sign up</Button>
+      </Link>
     </Form>
   )
 } 
