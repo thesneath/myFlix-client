@@ -7,6 +7,8 @@ import { LoginView } from "../login-view/login-view.jsx";
 import { MovieCard } from "../movie-card/movie-card.jsx";
 import { MovieView } from "../movie-view/movie-view.jsx";
 import { RegisterView } from "../register-view/register-view.jsx";
+import { GenreView } from "../genre-view/genre-view.jsx";
+import { DirectorView } from "../director-view/director-view.jsx";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -82,9 +84,9 @@ export class MainView extends React.Component {
                   </Col>
                 );
               if (movies.length === 0) return <div className="main-view" />;
-              return movies.map((movie) => (
-                <Col md={3} key={movie._id}>
-                  <MovieCard movie={movie} />
+              return movies.map((m) => (
+                <Col md={3} key={m._id}>
+                  <MovieCard movie={m} />
                 </Col>
               ));
             }}
@@ -101,7 +103,7 @@ export class MainView extends React.Component {
             }}
           />
           <Route
-            path="movies/:movieId"
+            path="/movies/:movieId"
             render={({ match, history }) => {
               if (!user)
                 return (
@@ -112,7 +114,7 @@ export class MainView extends React.Component {
               return (
                 <Col md={8}>
                   <MovieView
-                    movie={movies.find((m) => m._id === match.params.movieId)}
+                    movie={movies.find(m => m._id === match.params.movieId)}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
