@@ -9,6 +9,7 @@ import { MovieView } from "../movie-view/movie-view.jsx";
 import { RegisterView } from "../register-view/register-view.jsx";
 import { GenreView } from "../genre-view/genre-view.jsx";
 import { DirectorView } from "../director-view/director-view.jsx";
+import { ProfileView } from "../profile-view/profile-view.jsx";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -26,7 +27,7 @@ export class MainView extends React.Component {
   getMovies(token) {
     axios
       .get("https://alexdb.herokuapp.com/movies", {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
         this.setState({
@@ -91,10 +92,11 @@ export class MainView extends React.Component {
               ));
             }}
           />
+
           <Route
             path="/register"
             render={() => {
-              if(user) return <Redirect to="/" />
+              if (user) return <Redirect to="/" />;
               return (
                 <Col>
                   <RegisterView />
@@ -102,6 +104,24 @@ export class MainView extends React.Component {
               );
             }}
           />
+
+          <Route
+            path="/users/:name"
+            render={({ history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
+              return (
+                <Col md={8}>
+                  <ProfileView user={user} onBackClick={() => history.goBack()} />
+                </Col>
+              );
+            }}
+          />
+
           <Route
             path="/movies/:movieId"
             render={({ match, history }) => {
@@ -114,13 +134,14 @@ export class MainView extends React.Component {
               return (
                 <Col md={8}>
                   <MovieView
-                    movie={movies.find(m => m._id === match.params.movieId)}
+                    movie={movies.find((m) => m._id === match.params.movieId)}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
               );
             }}
           />
+
           <Route
             path="/directors/:name"
             render={({ match, history }) => {
@@ -144,6 +165,7 @@ export class MainView extends React.Component {
               );
             }}
           />
+
           <Route
             path="/genres/:name"
             render={({ match, history }) => {

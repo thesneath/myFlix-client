@@ -11,7 +11,7 @@ class MyFlixApplication extends React.Component {
     return (
       <Container>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#">AlexMDB</Navbar.Brand>
+          <Navbar.Brand href="/#">AlexMDB</Navbar.Brand>
         </Navbar>
         <MainView />
       </Container>
