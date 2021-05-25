@@ -27,7 +27,7 @@ export class MainView extends React.Component {
   getMovies(token) {
     axios
       .get("https://alexdb.herokuapp.com/movies", {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         this.setState({
@@ -86,9 +86,11 @@ export class MainView extends React.Component {
                 );
               if (movies.length === 0) return <div className="main-view" />;
               return movies.map((m) => (
-                <Col md={3} key={m._id}>
-                  <MovieCard movie={m} />
-                </Col>
+                <>
+                  <Col md={3} key={m._id}>
+                    <MovieCard movie={m} />
+                  </Col>
+                </>
               ));
             }}
           />
@@ -116,12 +118,19 @@ export class MainView extends React.Component {
                 );
               return (
                 <Col md={8}>
-                  <ProfileView user={user} onBackClick={() => history.goBack()} />
+                  <ProfileView
+                    user={user}
+                    movie={movies}
+                    onBackClick={() => history.goBack()}
+                  />
+                  <Button variant="secondary-dark" onClick={this.onLoggedOut}>
+                    Log Out
+                  </Button>
                 </Col>
               );
             }}
           />
-
+          
           <Route
             path="/movies/:movieId"
             render={({ match, history }) => {
@@ -137,6 +146,9 @@ export class MainView extends React.Component {
                     movie={movies.find((m) => m._id === match.params.movieId)}
                     onBackClick={() => history.goBack()}
                   />
+                  <Button variant="secondary-dark" onClick={this.onLoggedOut}>
+                    Log Out
+                  </Button>
                 </Col>
               );
             }}
@@ -161,6 +173,9 @@ export class MainView extends React.Component {
                     }
                     onBackClick={() => history.goBack()}
                   />
+                  <Button variant="secondary-dark" onClick={this.onLoggedOut}>
+                    Log Out
+                  </Button>
                 </Col>
               );
             }}
@@ -185,6 +200,9 @@ export class MainView extends React.Component {
                     }
                     onBackClick={() => history.goBack()}
                   />
+                  <Button variant="secondary-dark" onClick={this.onLoggedOut}>
+                    Log Out
+                  </Button>
                 </Col>
               );
             }}

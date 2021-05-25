@@ -1,0 +1,162 @@
+var helpers = require("../../../../../.nvm/versions/node/v14.16.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "ProfileUpdate", function () {
+    return ProfileUpdate;
+  });
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _axios = require("axios");
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  var _registerFormRegisterFormJsx = require("../register-form/register-form.jsx");
+  var _reactBootstrapModal = require("react-bootstrap/Modal");
+  var _reactBootstrapModalDefault = _parcelHelpers.interopDefault(_reactBootstrapModal);
+  var _reactBootstrapButton = require("react-bootstrap/Button");
+  var _reactBootstrapButtonDefault = _parcelHelpers.interopDefault(_reactBootstrapButton);
+  require("../register-view/register-view.jsx");
+  var _jsxFileName = "/Users/alexsneath/careerfoundry/myFlix-client/src/components/profile-update/profile-update.jsx", _s = $RefreshSig$();
+  function ProfileUpdate() {
+    _s();
+    const [show, setShow] = _react.useState(false);
+    const [username, setUsername] = _react.useState('');
+    const [password, setPassword] = _react.useState('');
+    const [email, setEmail] = _react.useState('');
+    const [birthday, setBirthday] = _react.useState('');
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const user = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    const handleSubmit = () => {
+      event.preventDefault();
+      _axiosDefault.default.put(`https://alexdb.herokuapp.com/users/${user}`, {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        console.log(response);
+        const data = response.data;
+        localStorage.setItem("user", data.Username);
+        localStorage.setItem("token", data.Password);
+        window.open(`/user/${user}`, '_self');
+        handleClose();
+      }).catch(e => console.log(e));
+    };
+    const handleDelete = () => {
+      event.preventDefault();
+      _axiosDefault.default.delete(`https://alexdb.herokuapp.com/users/${user}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        alert(`User: ${user} was deleted`);
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        handleClose();
+        window.open('/', '_self');
+      }).catch(e => {
+        console.log(e);
+      });
+    };
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+        variant: "primary",
+        onClick: handleShow,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69,
+          columnNumber: 7
+        }
+      }, "Update Profile"), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapModalDefault.default, {
+        show: show,
+        onHide: handleClose,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 73,
+          columnNumber: 7
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapModalDefault.default.Header, {
+        closeButton: true,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapModalDefault.default.Title, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75,
+          columnNumber: 11
+        }
+      }, "Update Profile")), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapModalDefault.default.Body, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_registerFormRegisterFormJsx.RegisterForm, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112,
+          columnNumber: 11
+        }
+      })), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapModalDefault.default.Footer, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 115,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+        variant: "secondary",
+        onClick: handleClose,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 116,
+          columnNumber: 11
+        }
+      }, "Cancel"), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+        variant: "primary",
+        onClick: handleSubmit,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 119,
+          columnNumber: 11
+        }
+      }, "Save Changes"), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+        variant: "danger",
+        onClick: handleDelete,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 122,
+          columnNumber: 11
+        }
+      }, "Delete Account"))))
+    );
+  }
+  _s(ProfileUpdate, "ZgNPOL/m4CHGGP0MuUsa6nMJYwE=");
+  _c = ProfileUpdate;
+  var _c;
+  $RefreshReg$(_c, "ProfileUpdate");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

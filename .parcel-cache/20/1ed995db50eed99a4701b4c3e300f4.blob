@@ -1,0 +1,234 @@
+var helpers = require("../../../../../.nvm/versions/node/v14.16.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "ProfileView", function () {
+    return ProfileView;
+  });
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _axios = require('axios');
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  var _moment = require('moment');
+  var _momentDefault = _parcelHelpers.interopDefault(_moment);
+  var _reactBootstrapButton = require('react-bootstrap/Button');
+  var _reactBootstrapButtonDefault = _parcelHelpers.interopDefault(_reactBootstrapButton);
+  var _reactBootstrapModal = require('react-bootstrap/Modal');
+  var _reactBootstrapModalDefault = _parcelHelpers.interopDefault(_reactBootstrapModal);
+  var _jsxFileName = "/Users/alexsneath/careerfoundry/myFlix-client/src/components/profile-view/profile-view.jsx";
+  class ProfileView extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        Username: "",
+        Email: "",
+        Birthday: "",
+        FavoriteMovies: []
+      };
+    }
+    componentDidMount() {
+      const token = localStorage.getItem('token');
+      const user = localStorage.getItem('user');
+      this.getUser(user, token);
+    }
+    getUser(user, token) {
+      _axiosDefault.default.get(`https://alexdb.herokuapp.com/users/${user}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        const data = response.data;
+        console.log(data.Email);
+        this.setState({
+          Username: data.Username,
+          Email: data.Email,
+          Password: data.Password,
+          Birthday: data.Birthday,
+          FavoriteMovies: data.FavoriteMovies
+        });
+      }).catch(error => {
+        console.log(error);
+      });
+    }
+    updateUser(user, token) {
+      _axiosDefault.default.put(`https://alexdb.herokuapp.com/users/${user}`, {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        const data = response.data;
+        this.setState({
+          Username: data.Username,
+          Email: data.Email,
+          Password: data.Password,
+          Birthday: data.Birthday,
+          FavoriteMovies: data.FavoriteMovies
+        });
+      });
+    }
+    render() {
+      const {user} = this.props;
+      console.log(user);
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 76,
+            columnNumber: 7
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          controlId: "Username",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 78,
+            columnNumber: 11
+          }
+        }, "Username: "), /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 79,
+            columnNumber: 11
+          }
+        }, this.state.Username)), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 82,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 83,
+            columnNumber: 11
+          }
+        }, "Password: "), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 84,
+            columnNumber: 11
+          }
+        }, this.state.Password)), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          controlId: "Email",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 87,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 88,
+            columnNumber: 11
+          }
+        }, "Email: "), /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 89,
+            columnNumber: 11
+          }
+        }, this.state.Email)), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          controlId: "Birthday",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 92,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 93,
+            columnNumber: 11
+          }
+        }, "Birthday: "), this.state.Birthday ? /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 94,
+            columnNumber: 34
+          }
+        }, _momentDefault.default(this.state.Birthday).format("MM/DD/YYYY")) : /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 94,
+            columnNumber: 100
+          }
+        })), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          controlId: "FavoriteMovies",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 98,
+            columnNumber: 11
+          }
+        }, "Favorite Movies: "), this.state.FavoriteMovies.length > 0 ? /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 99,
+            columnNumber: 51
+          }
+        }, this.state.FavoriteMovies) : /*#__PURE__*/_reactDefault.default.createElement("span", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 99,
+            columnNumber: 94
+          }
+        }, "None")), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+          variant: "primary",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 102,
+            columnNumber: 9
+          }
+        }, "Update Profile"), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapModalDefault.default, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 103,
+            columnNumber: 9
+          }
+        }))
+      );
+    }
+  }
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
