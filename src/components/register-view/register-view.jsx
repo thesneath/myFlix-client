@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
+
+import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -9,10 +11,9 @@ export function RegisterView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [validated, setValidated] = useState(false);
+  const [show, setShow] = useState(false);
 
   const handleSubmit = () => {
-    validate();
     event.preventDefault();
     axios
       .post("https://alexdb.herokuapp.com/users", {
@@ -27,12 +28,22 @@ export function RegisterView(props) {
         window.open("/", "_self");
       })
       .catch((e) => {
+        setShow(true);
         console.log("error registering the user");
       });
   };
 
   return (
     <Form onSubmit={handleSubmit}>
+      {show ? <Alert variant="danger">
+        <Alert.Heading>Invalid Information</Alert.Heading>
+        <p>Here's what may be wrong:</p>
+        <ul>
+          <li>Username must be at least 5 characters</li>
+          <li>Must be a valid Email</li>
+          <li>Must include a password and birthday</li>
+        </ul>
+      </Alert> : <></>}
       <Form.Group controlId="username">
         <Form.Label>Username:</Form.Label>
         <Form.Control
