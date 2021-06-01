@@ -54,7 +54,6 @@ export function ProfileUpdate(props) {
       headers: { Authorization: `Bearer ${token}` } 
     })
     .then(response => {
-      alert(`User: ${user} was deleted`);
       localStorage.removeItem('user');
       localStorage.removeItem('token');
       handleClose();

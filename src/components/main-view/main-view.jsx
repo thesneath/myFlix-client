@@ -123,7 +123,7 @@ export class MainView extends React.Component {
                     movie={movies}
                     onBackClick={() => history.goBack()}
                   />
-                  <Button variant="secondary-dark" onClick={this.onLoggedOut}>
+                  <Button variant="secondary-dark" onClick={() => this.onLoggedOut()}>
                     Log Out
                   </Button>
                 </Col>
@@ -146,7 +146,7 @@ export class MainView extends React.Component {
                     movie={movies.find((m) => m._id === match.params.movieId)}
                     onBackClick={() => history.goBack()}
                   />
-                  <Button variant="secondary-dark" onClick={this.onLoggedOut}>
+                  <Button variant="secondary-dark" onClick={() => this.onLoggedOut()}>
                     Log Out
                   </Button>
                 </Col>
@@ -173,7 +173,7 @@ export class MainView extends React.Component {
                     }
                     onBackClick={() => history.goBack()}
                   />
-                  <Button variant="secondary-dark" onClick={this.onLoggedOut}>
+                  <Button variant="secondary-dark" onClick={() => this.onLoggedOut()}>
                     Log Out
                   </Button>
                 </Col>
@@ -200,7 +200,7 @@ export class MainView extends React.Component {
                     }
                     onBackClick={() => history.goBack()}
                   />
-                  <Button variant="secondary-dark" onClick={this.onLoggedOut}>
+                  <Button variant="secondary-dark" onClick={() => this.onLoggedOut()}>
                     Log Out
                   </Button>
                 </Col>

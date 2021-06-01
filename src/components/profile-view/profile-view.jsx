@@ -55,6 +55,9 @@ export class ProfileView extends React.Component {
       })
       .then((response) => {
         console.log(`${movie} removed from favorites`);
+        this.setState({
+          FavoriteMovies: this.state.FavoriteMovies.filter(m => m._id === movie )
+        })
       })
       .catch((e) => console.log(e));
   }
@@ -69,7 +72,7 @@ export class ProfileView extends React.Component {
     const { user, movie } = this.props;
     console.log(movie);
     const favMovies = movie.filter(
-      (movie) => movie._id == this.state.FavoriteMovies
+      (movie) => movie._id === this.state.FavoriteMovies
     );
     console.log(favMovies);
     return (
@@ -101,8 +104,9 @@ export class ProfileView extends React.Component {
             <span>
               {favMovies.map((m) => (
                 <>
-                  <MovieCard movie={m} key={m._id} />
-                  <Button key={1} variant="danger" onClick={() => this.removeFav(m._id)}>Remove</Button>
+                  <MovieCard movie={m} key={m._id}>
+                    <Button variant="danger" onClick={() => this.removeFav(m._id)}>Remove</Button>
+                  </MovieCard>
                 </>
               ))}
             </span>
