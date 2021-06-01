@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export function ProfileUpdate() {
+export function ProfileUpdate(props) {
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +20,7 @@ export function ProfileUpdate() {
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     axios
       .put(
@@ -36,11 +36,9 @@ export function ProfileUpdate() {
         }
       )
       .then((response) => {
-        console.log(response);
         const data = response.data;
         localStorage.setItem("user", data.Username);
-        localStorage.setItem("token", data.Password);
-        window.open(`/user/${user}`, '_self');
+        props.updateUser(response.data)
         handleClose();
       })
       .catch(e => {

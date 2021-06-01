@@ -33,7 +33,7 @@ export class ProfileView extends React.Component {
       })
       .then((response) => {
         const data = response.data;
-        console.log(data.Email);
+        console.log(data.FavoriteMovies);
         this.setState({
           Username: data.Username,
           Email: data.Email,
@@ -57,6 +57,12 @@ export class ProfileView extends React.Component {
         console.log(`${movie} removed from favorites`);
       })
       .catch((e) => console.log(e));
+  }
+
+  updateUser = (user) => {
+    this.setState({
+      ...user
+    })
   }
 
   render() {
@@ -103,7 +109,7 @@ export class ProfileView extends React.Component {
           )}
         </div>
 
-        <ProfileUpdate />
+        <ProfileUpdate updateUser={this.updateUser} />
       </div>
     );
   }

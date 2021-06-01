@@ -37116,7 +37116,7 @@ try {
         }
       }).then(response => {
         const data = response.data;
-        console.log(data.FavoriteMovies);
+        console.log(data.Email);
         this.setState({
           Username: data.Username,
           Email: data.Email,
@@ -44278,4 +44278,4 @@ module.exports = exports["default"];
 
 },{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","@restart/hooks/useEventCallback":"3v8B9","warning":"5jojS","./NavContext":"7zQ1K","./SelectableContext":"3ATFf"}]},["1j6wU","68WUB","1DVjT"], "1DVjT", "parcelRequire279c")
 
-//# sourceMappingURL=index.02675e63.js.map
+//# sourceMappingURL=index.HASH_REF_f9eab60bc3a7a7c3f683683702675e63.js.map
