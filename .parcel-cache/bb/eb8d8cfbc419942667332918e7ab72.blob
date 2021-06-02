@@ -1,0 +1,8 @@
+.movie-view {
+  margin: auto;
+  max-width: 70%;
+}
+
+.movie-view img {
+  height: 500px;
+}

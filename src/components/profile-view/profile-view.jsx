@@ -76,7 +76,7 @@ export class ProfileView extends React.Component {
     );
     console.log(favMovies);
     return (
-      <div>
+      <div className="profile-view">
         <div>
           <span>Username: </span>
           <span>{this.state.Username}</span>
@@ -101,7 +101,7 @@ export class ProfileView extends React.Component {
           {this.state.FavoriteMovies.length < 1 ? (
             <span>None</span>
           ) : (
-            <span>
+            <div>
               {favMovies.map((m) => (
                 <>
                   <MovieCard movie={m} key={m._id}>
@@ -109,7 +109,7 @@ export class ProfileView extends React.Component {
                   </MovieCard>
                 </>
               ))}
-            </span>
+            </div>
           )}
         </div>
 

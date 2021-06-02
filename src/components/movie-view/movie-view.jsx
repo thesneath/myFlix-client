@@ -1,10 +1,20 @@
 import React from "react";
+import "./movie-view.scss";
+
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
 export class MovieView extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      isAdded: false,
+    }
+  }
 
   handleFavorite(movie) {
     let token = localStorage.getItem('token');
@@ -14,6 +24,9 @@ export class MovieView extends React.Component {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then(response => {
+      this.setState({
+        isAdded: true
+      });
       console.log(`${movie} added to favorites`)
     })
     .catch(e => {
@@ -37,27 +50,25 @@ export class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
-      <div className="movie-view">
-        <div className="movie-poster">
-          <img src={movie.ImagePath} />
-        </div>
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title} </span>
-        </div>
-        <div className="movie-title">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
+      <Card className="movie-view ">
+        <Card.Img variant="top" src={movie.ImagePath} />
+        <Card.Body>
+        <Card.Title className="movie-title">
+          {movie.Title}
+        </Card.Title>
+        <Card.Text>
+          {movie.Description}
+        </Card.Text>
         <Link to={`/directors/${movie.Director.Name}`}>
           <Button variant="link">Director</Button>
         </Link>
         <Link to={`/genres/${movie.Genre.Name}`}>
           <Button variant="link">Genre</Button>
         </Link>
-        <Button onClick={() => this.handleFavorite(movie._id)} >Add to Favorites</Button>
-        <Button onClick={() => { onBackClick(null); }}>Back</Button>
-      </div>
+        <Button variant="dark" className="btn-block" onClick={() => this.handleFavorite(movie._id)} >{this.state.isAdded ? "Added to Favorites" : "Add to Favorites"}</Button>
+        <Button className="btn-block" onClick={() => { onBackClick(null); }}>Back</Button>
+        </Card.Body>
+      </Card>
     );
   }
 }

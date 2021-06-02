@@ -1,0 +1,4 @@
+.movie-view {
+  margin: auto;
+  width: 70%;
+}
