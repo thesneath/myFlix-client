@@ -1,0 +1,8 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.modal {
+  background-color: #212121;
+}

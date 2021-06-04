@@ -1,0 +1,13 @@
+body {
+  background-color: #161618;
+  color: #FFFFFF;
+}
+
+.navbar {
+  background-color: #212121;
+  color: #818181;
+}
+
+.cards {
+  width: 70%;
+}

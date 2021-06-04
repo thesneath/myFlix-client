@@ -1,5 +1,17 @@
-$color: steelblue;
+$background: #161618;
+$foreground: #212121;
+$modal: #212121;
+$text-primary: #FFFFFF;
+$text-secondary: #818181;
 
-.my-flix {
-  color: $color;
+
+body {
+  background-color: $background;
+  color: $text-primary;
+}
+
+.btn-secondary {
+  color: $text-primary;
+  background-color: $text-secondary;
+  border: none;
 }

@@ -1,8 +1,11 @@
+import './profile-view.scss';
 import React from "react";
 import axios from "axios";
 import moment from "moment";
 
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { ProfileUpdate } from "../profile-update/profile-update.jsx";
 import { MovieCard } from "../movie-card/movie-card.jsx";
@@ -70,50 +73,39 @@ export class ProfileView extends React.Component {
 
   render() {
     const { user, movie } = this.props;
-    console.log(movie);
     const favMovies = movie.filter(
       (movie) => movie._id === this.state.FavoriteMovies
     );
-    console.log(favMovies);
     return (
-      <div className="profile-view">
-        <div>
-          <span>Username: </span>
-          <span>{this.state.Username}</span>
-        </div>
+      <div className="profile-view" >
+          <p>Username: {this.state.Username}</p>
 
-        <div>
-          <span>Email: </span>
-          <span>{this.state.Email}</span>
-        </div>
+          <p>Email: {this.state.Email}</p>
 
-        <div>
-          <span>Birthday: </span>
           {this.state.Birthday ? (
-            <span>{moment(this.state.Birthday).format("MM/DD/YYYY")}</span>
+            <p>Birthday: {moment(this.state.Birthday).format("MM/DD/YYYY")}</p>
           ) : (
-            <span />
+            <p>Birthday:</p>
           )}
-        </div>
-
-        <div>
           <span>Favorite Movies: </span>
-          {this.state.FavoriteMovies.length < 1 ? (
+          {this.state.FavoriteMovies.length === 0 ? (
             <span>None</span>
           ) : (
             <div>
               {favMovies.map((m) => (
-                <>
-                  <MovieCard movie={m} key={m._id}>
+                <Col key={m}>
+                  <MovieCard movie={m}> 
                     <Button variant="danger" onClick={() => this.removeFav(m._id)}>Remove</Button>
                   </MovieCard>
-                </>
+                </Col>
               ))}
             </div>
           )}
-        </div>
-
-        <ProfileUpdate updateUser={this.updateUser} />
+        <Row>
+          <Col>
+            <ProfileUpdate updateUser={this.updateUser} />
+          </Col>
+        </Row>
       </div>
     );
   }

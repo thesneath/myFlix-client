@@ -1,0 +1,11 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.profile-view {
+  background-color: #161618;
+  width: 0%;
+  margin: auto;
+  margin-top: 30px;
+}

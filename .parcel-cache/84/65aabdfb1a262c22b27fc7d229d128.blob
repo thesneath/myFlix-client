@@ -1,0 +1,6 @@
+.profile-view {
+  width: 70%;
+  margin: auto;
+  border: medium;
+  font-size: 50px;
+}

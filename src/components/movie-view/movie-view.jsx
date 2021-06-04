@@ -65,7 +65,7 @@ export class MovieView extends React.Component {
         <Link to={`/genres/${movie.Genre.Name}`}>
           <Button variant="link">Genre</Button>
         </Link>
-        <Button variant="dark" className="btn-block" onClick={() => this.handleFavorite(movie._id)} >{this.state.isAdded ? "Added to Favorites" : "Add to Favorites"}</Button>
+        <Button variant="secondary" className="btn-block" onClick={() => this.handleFavorite(movie._id)} >{this.state.isAdded ? "Added to Favorites" : "Add to Favorites"}</Button>
         <Button className="btn-block" onClick={() => { onBackClick(null); }}>Back</Button>
         </Card.Body>
       </Card>

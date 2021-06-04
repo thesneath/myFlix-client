@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import './profile-update.scss';
+
 import Alert from 'react-bootstrap/Alert';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -67,12 +69,12 @@ export function ProfileUpdate(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className="float-right" onClick={handleShow}>
         Update Profile
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+      <Modal className="profile-update" show={show} onHide={handleClose}>
+        <Modal.Header className="profile-update">
           <Modal.Title>Update Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>

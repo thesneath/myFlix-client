@@ -1,0 +1,15 @@
+$background: #161618;
+$foreground: #212121;
+$modal: #212121;
+$text-primary: #FFFFFF;
+$text-secondary: #818181;
+
+
+body {
+  background-color: $background;
+  color: $text-primary;
+}
+
+.card {
+  background-color: $foreground;
+}

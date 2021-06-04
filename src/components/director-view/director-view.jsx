@@ -1,26 +1,25 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 
+import './director-view.scss';
+
 
 export class DirectorView extends React.Component {
   render () {
     const { director, onBackClick } = this.props;
 
     return (
-      <div>
+      <div className="director-view">
         <div>
-          <span>Director: </span>
-          <span>{director.Name}</span>
+          <p>Director: {director.Name}</p>
         </div>
         <div>
-          <span>Birth Year: </span>
-          <span>{director.Birthyear}</span>
+          <p>Birth Year: {director.Birthyear}</p>
         </div>
         <div>
-          <span>Bio: </span>
-          <span>{director.Bio}</span>
+          <p>Bio: {director.Bio}</p>
         </div>
-        <Button onClick={() => { onBackClick(null); }}>Back</Button>
+        <Button className="float-right" onClick={() => { onBackClick(null); }}>Back</Button>
       </div>
     )
   }

@@ -1,22 +1,21 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 
+import './genre-view.scss';
 
 export class GenreView extends React.Component {
   render () {
     const { genre, onBackClick } = this.props;
 
     return (
-      <div>
+      <div className="genre-view">
         <div>
-          <span>Genre: </span>
-          <span>{genre.Name}</span>
+          <p>Genre: {genre.Name}</p>
         </div>
         <div>
-          <span>Description: </span>
-          <span>{genre.Description}</span>
+          <p>Description: {genre.Description}</p>
         </div>
-        <Button onClick={() => { onBackClick(null); }}>Back</Button>
+        <Button className="float-right" onClick={() => { onBackClick(null); }}>Back</Button>
       </div>
     )
   }

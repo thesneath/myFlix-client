@@ -6,6 +6,8 @@ import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import './register-view.scss'
+
 export function RegisterView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +36,7 @@ export function RegisterView(props) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="register-view mx-auto" onSubmit={handleSubmit}>
       {show ? <Alert variant="danger">
         <Alert.Heading>Invalid Information</Alert.Heading>
         <p>Here's what may be wrong:</p>

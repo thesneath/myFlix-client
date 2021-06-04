@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert'
+import Alert from 'react-bootstrap/Alert';
+
+import './login-view.scss';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -29,7 +31,7 @@ export function LoginView(props) {
   };
 
   return (
-    <Form>
+    <Form className="login-view mx-auto">
       {show ? <Alert variant="danger">Please enter valid username and password</Alert> : <></> }
       <Form.Group controlId="username">
         <Form.Label>Username:</Form.Label>

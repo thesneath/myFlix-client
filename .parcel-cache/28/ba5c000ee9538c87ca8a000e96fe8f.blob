@@ -1,0 +1,14 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.row {
+  display: flex;
+}
+
+.profile-view {
+  background-color: #161618;
+  margin: auto;
+  margin-top: 30px;
+}

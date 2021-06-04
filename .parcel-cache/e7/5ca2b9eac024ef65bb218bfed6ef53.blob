@@ -1,0 +1,9 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.movie-view {
+  margin: auto;
+  max-width: 50%;
+}

@@ -1,0 +1,10 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  color: #FFFFFF;
+  background-color: #818181;
+  border: none;
+}

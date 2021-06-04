@@ -1,0 +1,11 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  margin-left: 10px;
+  color: #FFFFFF;
+  background-color: #818181;
+  border: none;
+}

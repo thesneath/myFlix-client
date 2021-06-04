@@ -1,0 +1,8 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.navbar {
+  background-color: #161618;
+}

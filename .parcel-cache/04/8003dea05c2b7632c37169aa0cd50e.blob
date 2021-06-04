@@ -1,0 +1,12 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.modal-content {
+  background-color: #212121;
+}
+
+.modal-header {
+  border-bottom: 1px solid;
+}
