@@ -40,6 +40,7 @@ export function ProfileUpdate(props) {
       .then((response) => {
         const data = response.data;
         localStorage.setItem("user", data.Username);
+        console.log(response.data);
         props.updateUser(response.data)
         handleClose();
       })

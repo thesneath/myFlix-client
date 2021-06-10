@@ -32,14 +32,6 @@ body {
   color: #FFFFFF;
 }
 
-.card {
-  background-color: #212121;
-}
-body {
-  background-color: #161618;
-  color: #FFFFFF;
-}
-
 .movie-view {
   margin: auto;
   max-width: 50%;
@@ -120,6 +112,14 @@ body {
 
 .modal-footer {
   border-top: 1px solid #2e2e2e;
+}
+body {
+  background-color: #161618;
+  color: #FFFFFF;
+}
+
+.card {
+  background-color: #212121;
 }
 body {
   background-color: #161618;
