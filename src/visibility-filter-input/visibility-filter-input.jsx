@@ -15,5 +15,4 @@ function VisibilityFilterInput(props) {
   );
 }
 
-
-export default connect(null, { setFilter } )(VisibilityFilterInput);
+export default connect(null, { setFilter })(VisibilityFilterInput);
