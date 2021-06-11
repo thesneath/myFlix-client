@@ -1,14 +1,28 @@
+body {
+  background-color: #161618;
+  color: #FFFFFF;
+}
+
+.card {
+  background-color: #212121;
+}
+body {
+  background-color: #161618;
+  color: #FFFFFF;
+}
 
 .movie-view {
   margin: auto;
   max-width: 50%;
 }
-.profile-view {
-  width: 70%;
-  margin: auto;
-  margin-top: 30px;
+body {
+  background-color: #161618;
+  color: #FFFFFF;
 }
-.my-flix {
-  color: steelblue;
+
+.btn-secondary {
+  color: #FFFFFF;
+  background-color: #818181;
+  border: none;
 }
 /*# sourceMappingURL=index.17951e9a.css.map */

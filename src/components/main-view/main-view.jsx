@@ -7,7 +7,7 @@ import './main-view.scss';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from "../login-view/login-view.jsx";
 // import { MovieCard } from "../movie-card/movie-card.jsx";
@@ -26,9 +26,9 @@ import Col from "react-bootstrap/Col";
 class MainView extends React.Component {
   constructor() {
     super();
-    this.state = {
-      user: null,
-    };
+    // this.state = {
+    //   user: null,
+    // };
   }
 
   getMovies(token) {
@@ -47,18 +47,14 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem("user"),
-      });
+      this.props.setUser(localStorage.getItem('user'))
       this.getMovies(accessToken);
     }
   }
 
   onLoggedIn(authData) {
     console.log("authdata" + authData);
-    this.setState({
-      user: authData.user.Username,
-    });
+    this.props.setUser(authData.user.Username)
 
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
@@ -68,14 +64,12 @@ class MainView extends React.Component {
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
+    this.props.setUser('');
   }
 
   render() {
-    const { movies } = this.props;
-    const { user } = this.state;
+    const { movies, user} = this.props;
+    // const { user } = this.state;
 
     return (
       <>
@@ -224,7 +218,9 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return { movies: state.movies, 
+    user: state.user
+  }
 }
 
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser } )(MainView);

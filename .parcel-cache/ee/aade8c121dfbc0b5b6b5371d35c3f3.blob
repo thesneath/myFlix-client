@@ -1,0 +1,8 @@
+body {
+  background-color: #161618;
+  color: #818181;
+}
+
+.card {
+  background-color: #212121;
+}

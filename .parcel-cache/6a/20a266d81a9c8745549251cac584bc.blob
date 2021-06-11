@@ -1,0 +1,9 @@
+body {
+  background-color: #161618;
+  color: #818181;
+}
+
+.card {
+  box-shadow: 10px 5px 5px #3b3b3b;
+  background-color: #212121;
+}

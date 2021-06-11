@@ -1,4 +1,4 @@
-import './profile-view.scss';
+import "./profile-view.scss";
 import React from "react";
 import axios from "axios";
 import moment from "moment";
@@ -6,6 +6,7 @@ import moment from "moment";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import CardDeck from "react-bootstrap/CardDeck";
 
 import { ProfileUpdate } from "../profile-update/profile-update.jsx";
 import { MovieCard } from "../movie-card/movie-card.jsx";
@@ -36,7 +37,7 @@ export class ProfileView extends React.Component {
       })
       .then((response) => {
         const data = response.data;
-        console.log(data.FavoriteMovies);
+        console.log("favs", data.FavoriteMovies);
         this.setState({
           Username: data.Username,
           Email: data.Email,
@@ -59,48 +60,53 @@ export class ProfileView extends React.Component {
       .then((response) => {
         console.log(`${movie} removed from favorites`);
         this.setState({
-          FavoriteMovies: this.state.FavoriteMovies.filter(m => m._id === movie )
-        })
+          FavoriteMovies: this.state.FavoriteMovies.filter(
+            (m) => m._id === movie
+          ),
+        });
       })
       .catch((e) => console.log(e));
   }
 
   updateUser = (user) => {
     this.setState({
-      ...user
-    })
-  }
+      ...user,
+    });
+  };
 
   render() {
     const { user, movie } = this.props;
-    const favMovies = movie.filter(
-      (movie) => movie._id === this.state.FavoriteMovies
+    console.log(movie);
+    const favMovies = movie.filter((m) =>
+      this.state.FavoriteMovies.includes(m._id)
     );
+    console.log("favMovies", favMovies);
     return (
-      <div className="profile-view" >
-          <p>Username: {this.state.Username}</p>
+      <div className="profile-view">
+        <p>Username: {this.state.Username}</p>
 
-          <p>Email: {this.state.Email}</p>
+        <p>Email: {this.state.Email}</p>
 
-          {this.state.Birthday ? (
-            <p>Birthday: {moment(this.state.Birthday).format("MM/DD/YYYY")}</p>
-          ) : (
-            <p>Birthday:</p>
-          )}
-          <span>Favorite Movies: </span>
-          {this.state.FavoriteMovies.length === 0 ? (
-            <span>None</span>
-          ) : (
-            <div>
-              {favMovies.map((m) => (
-                <Col key={m}>
-                  <MovieCard movie={m}> 
-                    <Button variant="danger" onClick={() => this.removeFav(m._id)}>Remove</Button>
-                  </MovieCard>
-                </Col>
-              ))}
-            </div>
-          )}
+        {this.state.Birthday ? (
+          <p>Birthday: {moment(this.state.Birthday).format("MM/DD/YYYY")}</p>
+        ) : (
+          <p>Birthday:</p>
+        )}
+        <span>Favorite Movies: </span>
+        {this.state.FavoriteMovies.length === 0 ? (
+          <span>None</span>
+        ) : (
+          <>
+            {favMovies.map((m) => (
+              <div key={m._id}>
+                <MovieCard  movie={m} />
+                <Button  variant="danger" onClick={() => this.removeFav(m._id)}>
+                  Remove
+                </Button>
+              </div>
+            ))}
+          </>
+        )}
         <Row>
           <Col>
             <ProfileUpdate updateUser={this.updateUser} />

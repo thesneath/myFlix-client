@@ -1,15 +1,16 @@
 $background: #161618;
 $foreground: #212121;
-$modal: #212121;
+$modal:lighten(#212121, 5%);
 $text-primary: #FFFFFF;
 $text-secondary: #818181;
 
 
 body {
   background-color: $background;
-  color: $text-primary;
+  color: $text-secondary;
 }
 
 .card {
-  background-color: $foreground;
+  // box-shadow: 10px 5px 5px ;
+  background-color: $modal;
 }
