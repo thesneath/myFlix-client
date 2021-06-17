@@ -1,5 +1,0 @@
-.login-view {
-  margin-top: 30px;
-  width: 60%;
-  border: 1px solid;
-}
