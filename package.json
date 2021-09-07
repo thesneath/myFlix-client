@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel src/index.html"
+    "build": "parcel src/index.html",
+    "build-github": "rm -rf docs/* && parcel build src/index.html --public-url ./ -d docs"
   },
   "repository": {
     "type": "git",
