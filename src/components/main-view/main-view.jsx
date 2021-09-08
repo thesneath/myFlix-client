@@ -24,11 +24,8 @@ import Col from "react-bootstrap/Col";
 // import Button from "react-bootstrap/Button";
 
 class MainView extends React.Component {
-  constructor() {
-    super();
-    // this.state = {
-    //   user: null,
-    // };
+  constructor(props) {
+    super(props);
   }
 
   getMovies(token) {
@@ -69,7 +66,6 @@ class MainView extends React.Component {
 
   render() {
     const { movies, user} = this.props;
-    // const { user } = this.state;
 
     return (
       <>
